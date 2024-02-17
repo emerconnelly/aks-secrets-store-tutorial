@@ -8,7 +8,7 @@ resource "azurerm_role_assignment" "tf_azurerm_identity" {
 # grant read access for the Key Vault to the AKS Secrets Store CSI Driver managed identity
 resource "azurerm_role_assignment" "aks_secrets_store_csi_driver_identity" {
   scope              = azurerm_key_vault.this.id
-  role_definition_id = data.azurerm_role_definition.key_vault_reader.id
+  role_definition_id = data.azurerm_role_definition.key_vault_secrets_reader.id
   principal_id       = azurerm_kubernetes_cluster.this.key_vault_secrets_provider[0].secret_identity[0].object_id
 }
 
