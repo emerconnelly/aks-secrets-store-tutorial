@@ -10,7 +10,7 @@ output "sql_connection_string" {
   sensitive   = true
 }
 
-# replace value in secrets-provider-class.yaml
+# replace value in [secrets-provider-class.yaml]()
 output "aks_identity_tenant_id" {
   value       = azurerm_kubernetes_cluster.this.identity[0].tenant_id
   description = "Tenant ID of the Azure AD identity created for the AKS cluster."
