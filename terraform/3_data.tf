@@ -7,8 +7,8 @@ data "azurerm_role_definition" "key_vault_administrator" {
   scope = azurerm_key_vault.this.id
 }
 
-data "azurerm_role_definition" "key_vault_secrets_reader" {
-  name  = "Key Vault Secrets Reader"
+data "azurerm_role_definition" "key_vault_secrets_user" {
+  name  = "Key Vault Secrets User"
   scope = azurerm_key_vault.this.id
 }
 
