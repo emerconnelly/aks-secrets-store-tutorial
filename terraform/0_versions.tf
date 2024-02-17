@@ -19,5 +19,6 @@ provider "azurerm" {
       # do not use these in prod
       purge_soft_delete_on_destroy    = true
       recover_soft_deleted_key_vaults = false
-	}
+    }
+  }
 }
