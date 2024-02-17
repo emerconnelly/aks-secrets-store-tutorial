@@ -16,7 +16,7 @@ resource "azurerm_kubernetes_cluster" "this" {
     node_count      = 1
     os_sku          = "AzureLinux" # faster to deploy than Ubuntu
     os_disk_type    = "Ephemeral" # use the VM's local temp disk, faster to deploy than a networked managed disk
-    os_disk_size_gb = 30 # minimuum size for AKS
+    os_disk_size_gb = 30 # minimum size for AKS
     vnet_subnet_id  = azurerm_subnet.aks_nodes.id
 
     upgrade_settings {
