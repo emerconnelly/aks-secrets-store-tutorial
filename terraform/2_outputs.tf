@@ -10,6 +10,11 @@ output "sql_connection_string" {
   sensitive   = true
 }
 
+output "aks_app_gateway_ingress_public_ip" {
+  value       = data.azurerm_public_ip.this.ip_address
+  description = "Public IP of the AKS Application Gateway Ingress"
+}
+
 # replace value in secrets-provider-class.yaml
 output "aks_identity_tenant_id" {
   value       = azurerm_kubernetes_cluster.this.identity[0].tenant_id
