@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: proget
-        image: proget.inedo.com/productimages/inedo/proget:23.0.24
+        image: proget.inedo.com/productimages/inedo/proget:23.0.28
         ports:
         - containerPort: 80
           protocol: TCP
@@ -42,8 +42,8 @@ spec:
             cpu: 200m
             memory: 300Mi
         volumeMounts:
-        - name: secrets-store01-inline
-          mountPath: /mnt/secrets-store
+        - name: demo-web-app  # the name of the volume
+          mountPath: /mnt/secrets-store # arbitrary path to mount the secrets
           readOnly: true
         affinity:
           podAntiAffinity:
@@ -68,12 +68,12 @@ spec:
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
       volumes:
-      - name: secrets-store01-inline
+      - name: secrets-store # the name of the volume
         csi:
           driver: secrets-store.csi.k8s.io
           readOnly: true
           volumeAttributes:
-            secretProviderClass: aks-proget-poc-msi
+            secretProviderClass: demo-web-app # the name of the SecretProviderClass
 ---
 # service
 apiVersion: v1
