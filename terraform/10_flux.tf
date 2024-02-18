@@ -1,3 +1,4 @@
+# add the Flux exentsion to the AKS cluster
 resource "azurerm_kubernetes_cluster_extension" "flux" {
   name       = "microsoft.flux"
   cluster_id = azurerm_kubernetes_cluster.this.id
@@ -5,12 +6,13 @@ resource "azurerm_kubernetes_cluster_extension" "flux" {
   extension_type    = "microsoft.flux"
   release_namespace = "flux-system"
   configuration_settings = {
-    "image-automation-controller.enabled"              = true,
-    "image-reflector-controller.enabled"               = true,
-    "notification-controller.enabled"                  = true,
+    "image-automation-controller.enabled" = true,
+    "image-reflector-controller.enabled"  = true,
+    "notification-controller.enabled"     = true,
   }
 }
 
+# add the GitHub repository and a kustomization to Flux
 resource "azurerm_kubernetes_flux_configuration" "proget" {
   name       = azurerm_resource_group.this.name
   cluster_id = azurerm_kubernetes_cluster.this.id

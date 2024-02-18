@@ -3,7 +3,7 @@ resource "random_id" "this" {
 }
 
 resource "azurerm_resource_group" "this" {
-  name = "secrets-store-tutorial"
+  name = "aks-secrets-store-tutorial" # all resources will use this name
 
   location = "eastus" # cheapest location to deploy these resources to
 }

@@ -14,7 +14,7 @@ resource "azurerm_kubernetes_cluster" "this" {
     name                        = "default"
     temporary_name_for_rotation = "temp"
     vm_size                     = "Standard_D2a_v4" # cheapest VM with a local temp disk of at least 30GB, with a sweet bonus of accelerated networking
-    node_count                  = 2
+    node_count                  = 2 # two nodes are required for meet CPU limits
     os_sku                      = "AzureLinux" # faster to deploy than Ubuntu
     os_disk_type                = "Ephemeral" # use the VM's local temp disk, faster to deploy than a networked managed disk
     os_disk_size_gb             = 30 # minimum size for AKS
